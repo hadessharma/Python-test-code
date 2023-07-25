@@ -55,3 +55,15 @@ class LinkedList:
         self.tail.next  = None
         self.length    -= 1
         return popped
+    
+    def prepend(self, val: int) -> bool:
+        new_node = Node(val=val)
+        if not self.head:
+            self.head, self.tail = new_node, new_node
+            self.length+=1
+            return True
+        
+        new_node.next = self.head
+        self.head = new_node
+        return True
+        

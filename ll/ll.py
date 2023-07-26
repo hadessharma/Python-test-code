@@ -84,3 +84,37 @@ class LinkedList:
         self.length -= 1
         
         return popped
+    
+    def get(self, index):
+        if not self.head or self.length <= index:
+            return None
+        
+        temp  = self.head
+        count = 0
+        
+        while temp:
+            if count == index:
+                return temp
+            count+=1
+            temp = temp.next
+        
+        return None
+    
+    def set_value(self, index, val):
+        temp = self.get(index=index)
+        if temp:
+            temp.val = val
+            return True
+        return False
+    
+    def insert(self, index, val):
+        if index < 0 or index > self.length:
+            return False
+        
+        if self.head == self.get(index=index):
+            self.prepend(val=val)
+            return True
+        
+        if self.tail == self.get(index=index-1):
+            self.append_list(val=val)
+            

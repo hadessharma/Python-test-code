@@ -107,14 +107,18 @@ class LinkedList:
             return True
         return False
     
-    def insert(self, index, val):
-        if index < 0 or index > self.length:
-            return False
+    def reverse(self):
+        if not self.head or not self.head.next:
+            return None
         
-        if self.head == self.get(index=index):
-            self.prepend(val=val)
-            return True
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        pre = None
         
-        if self.tail == self.get(index=index-1):
-            self.append_list(val=val)
+        while temp:
+            n = temp.next
+            temp.next = pre
+            pre = temp
+            temp = n
             
